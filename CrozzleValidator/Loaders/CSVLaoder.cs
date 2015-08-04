@@ -9,10 +9,10 @@ namespace CrozzleValidator
     class CSVLaoder
     {
         int noOfWords;
-        int width {get;}
-        int height {get;}
-        LEVEL level {get;}
-        string[] crozzleWords;
+        public int width { get; set; }
+        public int height { get; set; }
+        LEVEL level { get; set; }
+        string[] wordList;
 
         public StringBuilder loaderMessages;
 
@@ -46,7 +46,7 @@ namespace CrozzleValidator
             string[] csvData = csvContent.Split(',');
 
             result = validateCSVData(csvData);
-            return crozzleWords;
+            return wordList;
         }
 
         private bool validateCSVData(string[] csvData)
@@ -117,10 +117,10 @@ namespace CrozzleValidator
 
             if (noOfWords == (csvData.Length - 4))
             {
-                crozzleWords = new string[noOfWords];
+                wordList = new string[noOfWords];
                 for (int i = 0; i < csvData.Length - 4; i++)
                 {
-                    crozzleWords[i] = csvData[i + 4];
+                    wordList[i] = csvData[i + 4];
                 }
             }
             else

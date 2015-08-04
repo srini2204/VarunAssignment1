@@ -64,8 +64,10 @@ namespace CrozzleValidator
             ofdLoadFiles.Filter = "TXT Flies(.txt)|*.txt|All files(*.*)|*.*";
             if (ofdLoadFiles.ShowDialog() == DialogResult.OK)
             {
+                clLoader.width = csvLoader.width;
+                clLoader.height = csvLoader.height;
                 string fileName = ofdLoadFiles.FileName;
-                wordList = csvLoader.loadWordlist(fileName);
+                clLoader.loadWordlist(fileName);
                 if (wordList.Length > 0)
                 {
                     tsmCrozzle.Enabled = true;
