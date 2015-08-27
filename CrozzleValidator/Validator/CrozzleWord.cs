@@ -33,13 +33,20 @@ namespace CrozzleValidator.Validator
                 }
           }
         }
+        String word;
         LinkedList<CrozzleWord> hCrozzleWords;
         LinkedList<CrozzleWord> vCrozzleWords;
 
 
-        public CrozzleWord()
+        public CrozzleWord(String word, Orietation orientation)
         {
-           
+            this.word = word;
+            this.orientation = orientation;
+        }
+
+        public override bool Equals(CrozzleWord obj)
+        {
+            return base.Equals(this.word == obj.word);
         }
     }
 }
