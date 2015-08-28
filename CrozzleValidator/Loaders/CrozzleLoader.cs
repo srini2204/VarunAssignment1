@@ -44,61 +44,49 @@ namespace CrozzleValidator
             return crozzleWords;
         }
 
-        private void validateNGenerateCrozzleData(string[] crozzleContent)
+        private Boolean validateNGenerateCrozzleData(string[] crozzleContent)
         {
-            //char[][] data = new char[width][];
-
-            //for (int i = 0; i < crozzleContent.Length; i++)
-            //{
-            //    data[i] = crozzleContent[i].ToCharArray();
-            //}
-
-            //addMessage("Crozzle words retrieved from text file and populated in a 2D array");
-
-            //for (int i = 0; i < data.Length; i++)
-            //{
-            //    for (int j = 0; j < data[i].Length; j++)
-            //    {
-            //        if (data[i][j] != ' ')
-            //        {
-                        
-            //        }
-            //    }
-            //}
+            Boolean result = true;
 
             //Find all Horizonatal Words
             char[] separators = { ' ' };
             String[] words;
+            int row = -1;
+            int column;
+
             foreach (String word in crozzleContent)
             {
+                row++;
+                column = 0;
                 words = word.Split(separators, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String cWord in words)
                 {
                     if (cWord.Length > 1)
                     {
+                        //Find the Column location
+                        column = crozzleContent[row].IndexOf(cWord, column);
                         //Create a new Horizontal CrozzleWord
-                        CrozzleWord temp = new CrozzleWord(cWord, Orietation.Horizontal);
+                        CrozzleWord temp = new CrozzleWord(cWord, row, column, Orientation.Horizontal);
 
                         // check for duplicate word
-                        if (crozzleWords.Contains()
+                        if (CrozzleWordList.HCrozzleWords == null && CrozzleWordList.HCrozzleWords.Find(temp) != null)
                         {
-                            errorMessages.Add("error: \"" + sequence + "\"already exists in the crozzle");
+                            CrozzleWordList.AddHorizantalWord(temp);
                         }
-
-                        // collect data about the word, and 
-                        // update the index for the next substring search
-                        WordData word = new WordData(sequence, rowNumber, row.IndexOf(sequence, columnIndex) + 1, true);
-                        columnIndex = word.location.column - 1 + sequence.Length;
-
-                        // store data about the word
-                        wordData.Add(word);
-                        horizontalWordData.Add(word);
+                        else
+                        {
+                            addMessage("Error: Word " + temp.Word +" is a duplicate entry. Can not procedd further.");
+                            result = false;
+                            return result;
+                        }
                     }
                 }
                
             }
 
             //Find all Vertical Rows
+
+            return result;
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrozzleValidator
 {
-    class CSVLaoder
+    class WordListLaoder
     {
         int noOfWords;
         public int width { get; set; }
@@ -16,7 +16,7 @@ namespace CrozzleValidator
 
         public StringBuilder loaderMessages;
 
-        public CSVLaoder()
+        public WordListLaoder()
         {
             loaderMessages = new StringBuilder(String.Empty);
         }

@@ -5,48 +5,57 @@ using System.Threading.Tasks;
 
 namespace CrozzleValidator.Validator
 {
-    enum Orietation
+    enum Orientation
     {
         Horizontal,
         Vertical
     }
+
+    struct Position
+    {
+        public int Row;
+        public int Column;
+    }
+
     class CrozzleWord
     {
-        int hPos { get; set; }
-        int vPos { get; set; }
-        Orietation orientation;
-        internal Orietation Orientation
+        Position location;
+        public Position Location
         {
-          get { return orientation; }
-          set { 
-              orientation = value;
-              switch (orientation)
-                {
-                    case Orietation.Horizontal:
-                        vCrozzleWords = new LinkedList<CrozzleWord>();
-                        break;
-                    case Orietation.Vertical:
-                        hCrozzleWords = new LinkedList<CrozzleWord>();
-                        break;
-                    default:
-                        break;
-                }
-          }
-        }
-        String word;
-        LinkedList<CrozzleWord> hCrozzleWords;
-        LinkedList<CrozzleWord> vCrozzleWords;
-
-
-        public CrozzleWord(String word, Orietation orientation)
-        {
-            this.word = word;
-            this.orientation = orientation;
+            get { return location; }
+            set { location = value; }
         }
 
-        public override bool Equals(CrozzleWord obj)
+        string word;
+        public string Word
         {
-            return base.Equals(this.word == obj.word);
+            get { return word; }
+            set { word = value; }
+        }
+
+        Orientation orientation;
+        public Orientation Orientation
+        {
+            get { return orientation; }
+            set { orientation = value; }
+        }
+
+        public CrozzleWord(String w, int r, int c, Orientation o)
+        {
+            Word = w;
+            location.Row = r;
+            location.Column = c;
+            Orientation = o;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return ((obj is CrozzleWord) && (this.Word == ((CrozzleWord)obj).Word));
+        }
+
+        public override string ToString()
+        {
+            return Word;
         }
     }
 }

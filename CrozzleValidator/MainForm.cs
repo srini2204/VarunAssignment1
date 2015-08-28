@@ -19,7 +19,7 @@ namespace CrozzleValidator
     public partial class mainForm : Form
     {
         StringBuilder errorMessage;
-        CSVLaoder csvLoader;
+        WordListLaoder csvLoader;
         CrozzleLoader clLoader;
         
         string[] wordList;
@@ -29,7 +29,7 @@ namespace CrozzleValidator
             InitializeComponent();
             tsmCrozzle.Enabled = false;
             errorMessage = new StringBuilder(String.Empty);
-            csvLoader = new CSVLaoder();
+            csvLoader = new WordListLaoder();
             clLoader = new CrozzleLoader();
         }
 

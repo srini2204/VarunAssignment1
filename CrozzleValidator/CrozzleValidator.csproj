@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Validator\ConstantsPredicates.cs" />
     <Compile Include="Loaders\CrozzleLoader.cs" />
-    <Compile Include="Loaders\CSVLaoder.cs" />
+    <Compile Include="Loaders\WordListLaoder.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\CrozzleValidator.cs" />
     <Compile Include="Validator\CrozzleWord.cs" />
+    <Compile Include="Validator\CrozzleWordList.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
